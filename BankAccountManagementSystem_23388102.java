@@ -14,23 +14,23 @@ public class BankAccountManagementSystem_23388102 {
 
     // Constructor to create an account
     public BankAccountManagementSystem_23388102(String accountNumber, String accountHolder, double initialBalance) {
-        if (isDuplicateAccount(accountNumber)) {
-            this.accountNumber = null;
-            this.accountHolder = null;
-            this.balance = 0.0;
-        }
-        else {
-            this.accountNumber = accountNumber;
-        }
 
-        this.accountHolder = accountHolder;
-        if (initialBalance < 0) {
-            this.balance = 0;
-        } else {
-            this.balance = initialBalance;
+
+            if (isDuplicateAccount(accountNumber)) {
+                this.accountNumber = null;
+                this.balance = 0.0;
+            } else {
+                this.accountNumber = accountNumber;
+            }
+
+            this.accountHolder = accountHolder;
+            if (initialBalance < 0) {
+                this.balance = 0;
+            } else {
+                this.balance = initialBalance;
+            }
+            accounts.add(this);
         }
-        accounts.add(this);
-    }
 
 
     public BankAccountManagementSystem_23388102() {
@@ -39,9 +39,7 @@ public class BankAccountManagementSystem_23388102 {
         this.balance = 100;
     }
 
-    public double getBalance() {
-        return balance;
-    }
+
     private boolean isDuplicateAccount(String accountNumber) {
         for (BankAccountManagementSystem_23388102 account : accounts) {
             if (account.accountNumber.equals(accountNumber)) {
@@ -53,6 +51,18 @@ public class BankAccountManagementSystem_23388102 {
     public String getAccountNumber() {
         return accountNumber;
     }
+
+    public void deposit (double amount) {
+        if (amount <= 0) {
+            System.out.println("Invalid input");
+        } else {
+            this.balance += amount;
+        }
+    }
+    public double getBalance() {
+        return balance;
+    }
+
 
 
 }
