@@ -79,6 +79,13 @@ class TDD_23388102 {
         assertEquals(100.0, account.getBalance(), "Balance should remain unchanged when withdrawal amount > balance.");
     }
 
+    @Test
+    public void testBalanceInquiry() {
+        BankAccountManagementSystem_23388102 account2 = new BankAccountManagementSystem_23388102();
+        String expected = String.format("Account: %s | Balance: %.2f", account2.getAccountNumber(), account2.getBalance());
+        assertEquals(expected, account2.inquireBalance(), "The balance inquiry should return the correct account balance.");
+    }
+
 
 
 

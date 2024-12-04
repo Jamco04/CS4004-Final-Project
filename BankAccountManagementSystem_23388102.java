@@ -1,3 +1,5 @@
+import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.HashMap;
@@ -15,10 +17,8 @@ public class BankAccountManagementSystem_23388102 {
     // Constructor to create an account
     public BankAccountManagementSystem_23388102(String accountNumber, String accountHolder, double initialBalance) {
 
-
             if (isDuplicateAccount(accountNumber)) {
                 this.accountNumber = null;
-                this.balance = 0.0;
             } else {
                 this.accountNumber = accountNumber;
             }
@@ -75,6 +75,16 @@ public class BankAccountManagementSystem_23388102 {
             }
         }
     }
+
+    public String inquireBalance() {
+        if (this.accountNumber == null || this.balance < 0) {
+            return "Account not found or balance invalid.";
+        }
+        return String.format("Account: %s | Balance: %.2f", this.accountNumber, this.balance);
+    }
+
+
+
 
 
 }
