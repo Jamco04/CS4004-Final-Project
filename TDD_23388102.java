@@ -55,6 +55,31 @@ class TDD_23388102 {
         assertEquals(100.0, account.getBalance(), "Balance should not change when depositing zero.");
     }
 
-    
+    @Test
+    public void testSuccessfulWithdrawal() {
+        account.withdraw(50.0);
+        assertEquals(50.0, account.getBalance(), "Balance should decrease by the withdrawn amount.");
+    }
+
+    @Test
+    public void testWithdrawalWithNegativeAmount() {
+        account.withdraw(-50.0);
+        assertEquals(100.0, account.getBalance(), "Balance should not change when withdrawal amount is negative.");
+    }
+
+    @Test
+    public void testPreventNegativeBalance() {
+        account.withdraw(150.0); // Overdraft attempt
+        assertEquals(100.0, account.getBalance(), "Balance should remain unchanged when overdrawing.");
+    }
+
+    @Test
+    public void testWithdrawalAmountOverBalance(){
+        account.withdraw(150.0); // Overdraft attempt
+        assertEquals(100.0, account.getBalance(), "Balance should remain unchanged when withdrawal amount > balance.");
+    }
+
+
+
 
 }

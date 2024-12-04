@@ -63,9 +63,22 @@ public class BankAccountManagementSystem_23388102 {
         return balance;
     }
 
+    public void withdraw (double amount) {
+        if (amount > this.getBalance()) {
+            System.out.println("Withdrawal amount cannot exceed balance");
+        }
+        else {
+            if (amount <= 0 || this.getBalance() - amount < 0) {
+                System.out.println("Invalid input");
+            } else {
+                this.balance -= amount;
+            }
+        }
+    }
 
 
 }
+
 
 
 
